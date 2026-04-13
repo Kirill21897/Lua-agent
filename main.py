@@ -10,8 +10,15 @@ def main():
             break
             
         result = agent.run(user_input)
-        if result:
-            with open("workspace/final_result.lua", "w") as f:
+        if isinstance(result, dict):
+            if result.get("type") == "success":
+                with open("workspace/final_result.lua", "w", encoding="utf-8") as f:
+                    f.write(result["content"])
+                print("[*] Финальный код сохранен в workspace/final_result.lua")
+            elif result.get("type") == "error":
+                print(f"[-] Ошибка: {result['content']}")
+        elif isinstance(result, str) and result:
+            with open("workspace/final_result.lua", "w", encoding="utf-8") as f:
                 f.write(result)
             print("[*] Финальный код сохранен в workspace/final_result.lua")
 
