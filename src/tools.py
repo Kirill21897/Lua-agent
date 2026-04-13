@@ -1,6 +1,6 @@
 import subprocess
 import os
-from config import Config
+from src.config import Config
 
 class LuaTools:
     @staticmethod

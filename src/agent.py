@@ -1,6 +1,6 @@
 import requests
 import re
-from config import Config
+from src.config import Config
 from tools import LuaTools
 import src.prompts as prompts
 import os
